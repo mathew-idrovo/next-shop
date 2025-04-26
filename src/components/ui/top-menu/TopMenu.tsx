@@ -1,9 +1,13 @@
+'use client'
 import { titleFont } from '@/config/font'
+import { useUIStore } from '@/store'
 import { Search, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
 export const TopMenu = () => {
+  const openSideMenu = useUIStore((state) => state.openSideMenu)
+
   return (
     <nav className="flex px-5 justify-between items-center w-full">
       {/* Logo */}
@@ -49,7 +53,10 @@ export const TopMenu = () => {
             <ShoppingCart className="w-5 h-5" />
           </div>
         </Link>
-        <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-100">
+        <button
+          onClick={openSideMenu}
+          className="m-2 p-2 rounded-md transition-all hover:bg-gray-100"
+        >
           Menu
         </button>
       </div>
